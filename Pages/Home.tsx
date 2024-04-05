@@ -3,12 +3,13 @@ import { useQuery } from "@tanstack/react-query";
 import { FetchPosts } from "../Queries/getDummyData";
 
 const Home = ({ navigation }: any) => {
-  const { data, isError, isLoading } = useQuery({
+  const { data, isError, isLoading, error } = useQuery({
     queryKey: ["posts"],
     queryFn: FetchPosts,
   });
 
   if (isError) {
+    console.log(error.message)
     return <Text>There was an error</Text>;
   }
 
